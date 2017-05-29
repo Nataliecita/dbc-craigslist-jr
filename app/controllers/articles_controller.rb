@@ -1,33 +1,25 @@
 class ArticlesController < ApplicationController
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :new, :create, :edit]
 
-  # def index
-  #   @article = Article.new
-  # end
 
   def show
-    @category = Category.find(params[:category_id])
-    @article = Article.find(params[:id])
   end
 
   def new
-    @category = Category.find(params[:category_id])
     @article = Article.new
   end
 
   def create
-    @category = Category.find(params[:category_id])
     @article = @category.articles.create(article_params)
      redirect_to category_path(@category)
   end
 
   def edit
-    @category = Category.find(params[:category_id])
     set_article
   end
 
   def update
-    set_article
-
     if @article.update(article_params)
       redirect_to(@article.category)
     else
@@ -36,7 +28,6 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
-    set_article
     @article.destroy
     redirect_to(@article.category)
   end
@@ -48,6 +39,10 @@ class ArticlesController < ApplicationController
 
     def set_article
       @article = Article.find(params[:id])
+    end
+
+    def set_category
+      @category = Category.find(params[:category_id])
     end
 
 end
