@@ -31,8 +31,14 @@ class ArticlesController < ApplicationController
     if @article.update(article_params)
       redirect_to(@article.category)
     else
-
+      render 'edit'
     end
+  end
+
+  def destroy
+    set_article
+    @article.destroy
+    redirect_to(@article.category)
   end
 
   private
