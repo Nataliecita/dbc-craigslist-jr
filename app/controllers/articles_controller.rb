@@ -25,6 +25,16 @@ class ArticlesController < ApplicationController
     set_article
   end
 
+  def update
+    set_article
+
+    if @article.update(article_params)
+      redirect_to(@article.category)
+    else
+
+    end
+  end
+
   private
     def article_params
       params.require(:article).permit(:title, :description, :location, :price, :email)
