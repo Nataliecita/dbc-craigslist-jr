@@ -3,4 +3,7 @@
 <% @category.articles.each do |article| %>
   <p> <%= link_to article.title, category_article_path(@category, article)
    %></p>
+
 <% end %>
+
+<p> <%= link_to 'Back', categories_path %></p>
