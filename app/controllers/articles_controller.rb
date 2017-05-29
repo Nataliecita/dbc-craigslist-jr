@@ -16,7 +16,6 @@ class ArticlesController < ApplicationController
   end
 
   def edit
-    set_article
   end
 
   def update
@@ -33,6 +32,7 @@ class ArticlesController < ApplicationController
   end
 
   private
+  
     def article_params
       params.require(:article).permit(:title, :description, :location, :price, :email)
     end
