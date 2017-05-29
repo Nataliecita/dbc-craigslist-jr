@@ -15,5 +15,14 @@ class ArticlesController < ApplicationController
   end
 
   def create
+    @category = Category.find(params[:category_id])
+    @article = @category.articles.create(article_params)
+     
   end
+
+  private
+    def article_params
+      params.require(:article).permit(:title, :description, :location, :price, :email)
+    end
+
 end
