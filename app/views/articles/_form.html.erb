@@ -1,6 +1,5 @@
-<h3>Create new article</h3>
+<%= form_for([@category, @article]) do  |f| %>
 
-<%= form_for([@category, @category.articles.build]) do  |f| %>
 <p>
   <%= f.label :title  %>
   <%= f.text_field :title %> <br>
